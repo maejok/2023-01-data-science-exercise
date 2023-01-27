@@ -1,49 +1,27 @@
 # 2023-01 ICRAR Data Science Exercise
 
-## General instructions
 
-1. Fork this repository into your own GitHub account (if you use clone your name will be visible in the original repo).
-1. All your work will be done in your repository.
-1. Inspect the data and understand what is available.
-1. When going through the exercise, create git commits and pushes, making a history of changes that can be inspected later.
-1. The exercise should be completed in Python 3.9+.
-1. Your git repository should be structured and populated using a standard Python project template for application development, which other people might reuse.
-1. Create a __README__ file in the root of your repository, explaining how to run your code.
-1. At the end of the exercise, you will __have__ to push your code to your GitHub repository and allow access to the following Git-Ids: [KevinVinsen](https://github.com/KevinVinsen) and [awicenec](https://github.com/awicenec). 
+In this project, we  carried out exploratory data analysis on the given dataset. 
 
-## Details
+In the first part, we used PyCharm to produce "main.py" file.  We read the csv files in each folder using glob and dask and we merged all the csv files in a pandas datframe.  We  cleaned and consolidated CSV data files in a data directory and produced four output CSV files, one for each month, in the 'data'. We generated all time deltas with '10' minutes interval from '2022-06 00:00' to '2022-09 23:50'. We joinded the given data set to the time list and used forward and backward fill to replace missing data and retained the output files that has strictly hourly cadence, with 24 rows for every day in  each of the monthly file according to the given instruction.
 
-The two objectives of this exercise are:
-1. Produce cleaned and consolidated data files suitable for loading by another process (which is not part of this exercise).
-1. Produce a visualisation showing significant events/features in the data.
+In the second part, we used jupyter notebook and the appropriate visualisation tools. we first checked the overall distribution of the data and verify that there are no outliers or unexpected values. We also checked for any missing values and ensure that they were handled properly during the cleaning process.We created a histogram for the distribution of the averge of each name category.We also created a heatmap to check for any correlations between the columns. We then created time series sample plots and plots for the minimum, average and maximum values as well as moving avergaed and exponential smoothing to see how the values change over time. This allowed us to identify any patterns or trends in the data, as well as sudden changes or anomalies. This helped us to identify any relationships between the variables and see if there are dependencies or causalities.
 
-### Objective 1
+Finally, we created a summary of the key findings and observations from the visualizations in a markdown cell to explain and describe the data.The specific python packages and tools we used include Matplotlib, seaborn and plotly.express which  always good choices for interactive data exploration and analysis. 
 
-You need to clean and consolidate the CSV data files in the data directory and produce four output CSV files, one for each month.
-The cadence of the output data files needs to be strictly hourly (i.e. 00:00:00, 01:00:00, 02:00:00, etc.) and complete, i.e. 24 rows for every day in the monthly file.
-The output file should contain the same column names as the input files.
+The folder is structured  as follows
 
-When you encounter missing rows in the original data files, use the following rules:
-
-1. If the top of the hour (00 minutes) entry is missing or empty, the data for 10 minutes to the hour should be used.
-1. If that is also unavailable, use the data for 10 minutes past the hour.
-1. If neither of these values is available, record NaNs for all the data columns.
-
-No matter what, the __observe_time__ column should always contain the respective top of the hour time, and should never contain a NaN.
-
-You should use a standard Python project template, similar to the [example project layout](#Example project template) shown below, for this part of the exercise. __A Jupyter notebook is not an acceptable solution for this objective.__
-
-### Example project template
 ```
 2023-01-data-science-exercise/
 ├── README.md
 ├── data
-│   ├── 2022-06
-│   ├── 2022-07
-│   ├── 2022-08
-│   └── 2022-09
-├── jupyter
-│   └── notebook.ipynb
+│   ├── df_2022_06.csv
+│   ├── df_2022_07.csv
+│   ├── df_2022_08.csv
+│   └── df_2022_09.csv
+|   |---main.py
+├── jupyter-notebook
+│   └── jupyter-notebook.ipynb
 ├── requirements.txt
 ├── src
 │   ├── __init__.py
@@ -53,12 +31,18 @@ You should use a standard Python project template, similar to the [example proje
     └── test_code.py
 ```
 
+To run the codes:
+1. Clone the repository to your local machine using the command:
+ git clone https://github.com/username/repositoryname.git
 
-### Objective 2
+2. Navigate to the project directory by using the command:
+cd repositoryname
 
-For the visualisation, think about a situation, where you have to explain and describe the data to somebody and verify that your cleaning actually worked as expected.
-What would you show and how would you show it?
-Given that we have actually not told you anything about what the data actually is, this really needs to concentrate on what you can derive from looking at the data, i.e. plotting it in various ways.
+3. Install the required dependencies by running:
+pip install -r requirements.txt
 
-The python package/tools (MatPlotLib, Plotly, Jupyter) you use to produce the visualisation is up to you.
-__Jupyter notebooks are acceptable for this objective.__
+4. Run the code by using the command:
+python main.py --input_file input.txt --output_file output.txt
+
+5. The output will be saved in the specified output file.
+
