@@ -33,7 +33,7 @@ The folder is structured  as follows
 
 To run the codes:
 1. Clone the repository to your local machine using the command:
- git clone https://github.com/username/repositoryname.git
+ git clone https://github.com/maejok/2023-01-data-science-exercise
 
 2. Navigate to the project directory by using the command:
 cd repositoryname
