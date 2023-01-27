@@ -1,0 +1,6 @@
+python==3.9.12
+jupyter notebook==1.0.0
+Conda 4.14.0
+pandas 1.4.3
+dask 2022.02.1
+PyCharm 2022.1.03 (Community Edition)
